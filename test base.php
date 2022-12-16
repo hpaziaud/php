@@ -13,7 +13,7 @@
 <?php echo "<div>salut</div>";
 
 try{
-$ipserver="192.168.64.72";
+$ipserver="192.168.65.193";
 $nomBase= "hassan paziaud";
 $loginPrivbilege="SiteWeb";
 $passPrivilege="SiteWeb";
@@ -35,7 +35,7 @@ if ($resultat ->rowcount() >0){
 }
 
 
-$
+
 
 
 ?>
