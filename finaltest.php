@@ -13,31 +13,36 @@ echo "coucou";
 ?>
 
 
-<div>
-<div>
-<?php
-<label>name : </label> 
- <input type="text" placeholder="Enter Password" name="name" required> 
+
+<form method="post">
+   <label>name : </label> 
+ <input type="text" placeholder="Enter Password" name="name" id="name1" value="<?php echo $name; ?>" required> 
  </div>
  <div>
 <label>Password : </label> 
- <input type="password" placeholder="Enter Password" name="password" required> 
+ <input type="password" placeholder="Enter Password" name="password" id="password1" value="<?php echo $password; ?>" required> 
  <button type="submit">Login</button>
+</form>
+
+<?php
+if (isset($_POST["name"]) && ($_POST["password"])) {
+    
+    $name = $_POST["name"];
+    $password= $_POST["password"]
+    if (($name =="julien") && ($password=="1234")) {
+        echo "vous etes connecter";
+
+    }else{
+        echo"again";
+    }
+  }else{
+    echo"mercie de remplir le champs";
+  }
 
 ?>
 
 
- if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-  // L'utilisateur est connecté, afficher le message de bienvenue et le bouton de déconnexion
-  echo "Bienvenue, vous êtes connecté. <br><br>";
-  echo "<button type='button' onclick='logout()'>Déconnexion</button>";
 
-
-  $my_variable = "Hello World!";
-
-if ($my_variable) {
-  echo $my_variable;
-}
 
  </div>
  </div>
