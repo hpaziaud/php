@@ -14,24 +14,27 @@
 
 try{
 $ipserver="192.168.65.193";
-$nomBase= "hassan paziaud";
+$nomBase= "hassan";
 $loginPrivbilege="SiteWeb";
 $passPrivilege="SiteWeb";
 
-$GLOBALS["pdo"] = new PDO('mysql:host=' .$ipserver . ';dbname=' . $nomBase . '', $loginPrivilege, $passPrivilage);
+$GLOBALS["pdo"] = new PDO('mysql:host=' .$ipserver . ';dbname=' . $nomBase . '', $loginPrivbilege, $passPrivilege);
 
-$requete = "select * from patient";
+$requete = "select * from Patient";
+
 $resultat = $GLOBALS["pdo"]->query($requete);
 
 if ($resultat ->rowcount() >0){
+    echo "coucou";
     while($tab = $resultat->fetch()){
+        echo "coucou";
         echo "le nom est:" .$tab["nom"]." le prenom est: ".$tab["prenom"]."id :".$tab["id"]."<br>";
     }
 }
 
-}catch (\throwable $th) {
+}catch (Exception $error) {
 
- echo"error est : ". $error->getMessage();
+ echo "error est : ". $error->getMessage();
 }
 
 
