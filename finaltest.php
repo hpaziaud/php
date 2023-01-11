@@ -12,8 +12,6 @@
 echo "coucou";
 ?>
 
-
-
 <form method="post">
    <label>name : </label> 
  <input type="text" placeholder="Enter Password" name="name" id="name1" value="<?php echo $name; ?>" required> 
