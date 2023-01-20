@@ -124,7 +124,7 @@ if(isset($_SESSION["autoriser"]) && $_SESSION["autoriser"]=="oui" ){
     { 
     session_unset();
     }else {
-        echo 
+        echo "salut";
     }
     ?>
 }else{
