@@ -119,8 +119,14 @@ if(isset($_SESSION["autoriser"]) && $_SESSION["autoriser"]=="oui" ){
        
          <input type="submit" name="deco" value="deconnexion" />
       </form>
-
-<?php
+    <?php
+    if(isset($_POST["deco"])&& $_GET['deco']==true)
+    { 
+    session_unset();
+    }else {
+        echo 
+    }
+    ?>
 }else{
 
 
