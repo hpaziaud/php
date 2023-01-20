@@ -1,26 +1,9 @@
+<?php session_start();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if(isset($_POST["deco"])){
+echo "acction deconnexion";
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,39 +81,58 @@ print_r($table);
 echo 'moyenne de la table = ' . $moyenne . "\n";
 echo 'il y a ' . $cle . 'nombre';
 ?>
- 
+ <br><br><br><br><br><br><br><br>
  
 <?php try {
-    session_start();
-    @$pass=$_POST["pass"];
-    @$valider=$_POST["valider"];
+    if(isset($_POST["pass"])){
+
+   
+    $pass=$_POST["pass"];
+    $valider=$_POST["valider"];
     if(isset($valider)){
         if(empty($pass)) $erreur="Mot de passe laissé vide!";
-        else{
-            $sel=[r,o,o,t];
-            if $sel->execute(array($pass));
-            $_SESSION["autoriser"]="oui";
-         
+       
+            if($pass=="root"){
+                $_SESSION["autoriser"]="oui";
+                echo "coucou ca marche";
+            }
+        
+      else{
+        $erreur="Mauvais login ou mot de passe!";
+        echo "il y a ". $erreur ."merci";
       }
-      else
-         $erreur="Mauvais login ou mot de passe!";
-         echo "il y a ". $erreur ."merci";
+        
    }
+}
 
 
 
 } catch (PDOException $e) {
     echo $e->getMessage();
-} ?>
+} 
 
 
+if(isset($_SESSION["autoriser"]) && $_SESSION["autoriser"]=="oui" ){
+    echo "cvouc etes connecté toto fair ici un form de deconnexion";
+    ?>
+<form name="fo" method="post" action="">
+       
+         <input type="submit" name="deco" value="deconnexion" />
+      </form>
 
+<?php
+}else{
+
+
+?>
  <h1>Inscription</h1>
      <form name="fo" method="post" action="">
          <input type="password" name="pass" placeholder="<?php echo $pass?>" /><br />
-         <input type="submit" name="valider" value="<?php echo $valider?>" />
+         <input type="submit" name="valider" value="valider" />
       </form>
-
+<?php
+}
+?>
 
 
 
