@@ -1,3 +1,35 @@
+
+<?php
+   try{
+      $pdo=new PDO("mysql:host=localhost;dbname=mabase","user","1234");
+   }
+   catch(PDOException $e){
+      echo $e->getMessage();
+   }
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -45,14 +77,37 @@
         mafonction("fruit","legumes","17");
         ?>
         
-        <?php
+  
+
+
+
+
+      /*  <?php
     $table = array(2, 4, 6, 8);
     print_r ($table);
     echo "somme de la table = " . array_sum($table) . "\n";
     $moyenne = array_sum($table)/count($table);
     echo "moyenne de la table = ". $moyenne . "\n";
 
-       ?>
+       ?>*/
+
+<?php 
+        $table = array(2, 4, 6, 8);
+        $somme_notes = 0;
+        $i = 0;
+        foreach($table as $cle=>$valeur)
+        {
+            $i++; // On incrémente la variable qui nous dit combien de tour on fait
+            $somme_notes+=$valeur;
+            // équivaut a $somme_notes = $somme_notes + $valeur
+        }
+        $moyenne = $somme_notes / $i;
+        print_r ($table);
+        echo "moyenne de la table = ". $moyenne . "\n";
+        echo "il y a ". $cle ."nombre";
+        ?>
+
+
 
 
 
