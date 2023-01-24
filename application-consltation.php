@@ -25,6 +25,7 @@ try {
 
     $requete = "select * from Patient";
     $requete2 =  "select * from Medecin";
+    $date = "select * from consultation where HOUR(dateheure)";
     $resultat = $GLOBALS["pdo"]->query($requete);
     $resultat2 = $GLOBALS["pdo"]->query($requete2);
     //resultat est du coup un objet de type PDOStatement
@@ -58,6 +59,7 @@ try {
         }
         ?>
         </select>
+        <p><input type="submit" value="OK"></p>
     </form>
     
     
