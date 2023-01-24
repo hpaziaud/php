@@ -17,21 +17,57 @@
 try {
 
     $ipserver ="192.168.65.60";
-    $nomBase = "Medecin";
+    $nomBase = "medecin";
     $loginPrivilege ="root";
     $passPrivilege ="root";
 
     $GLOBALS["pdo"] = new PDO('mysql:host=' . $ipserver . ';dbname=' . $nomBase . '', $loginPrivilege, $passPrivilege);
 
     $requete = "select * from Patient";
-
+    $requete2 =  "select * from Medecin";
     $resultat = $GLOBALS["pdo"]->query($requete);
+    $resultat2 = $GLOBALS["pdo"]->query($requete2);
     //resultat est du coup un objet de type PDOStatement
-    $tabMedecins = $resultat->fetchALL();
-    foreach ($tabMedecins as $Medecin) {
-       echo $Medecin["nom"]." ".$Medecin["prenom"]."<br>";
-    }
+    $tabPatient = $resultat->fetchALL();
+    $tabMedecins = $resultat2->fetchALL();
+    ?>
 
+    <form action="" method="post">
+    <select name="idPatient">
+        <?php
+       
+        foreach ($tabPatient as $Patient) {
+            ?>
+        
+            <option value="<?=$Patient["nom"]?>"> <?=$Patient["prenom"]?> </option>
+            
+        <?php
+        }
+        ?>
+          </select>
+        
+
+        <select name="idMedecins">
+        <?php
+        foreach ($tabMedecins as $Medecin) {
+            ?>
+        
+            <option value="<?=$Medecin["nom"]?>"> <?=$Medecin["prenom"]?> </option>
+            
+        <?php
+        }
+        ?>
+        </select>
+    </form>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 } catch (Exception  $error) {
@@ -39,6 +75,7 @@ try {
 }
 
 ?>
+
 
 
 
