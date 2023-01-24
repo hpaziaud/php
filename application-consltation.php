@@ -69,7 +69,7 @@ try {
     
     
     
-
+<?php
 } catch (Exception  $error) {
     echo "error est : ".$error->getMessage();
 }
