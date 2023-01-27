@@ -15,7 +15,7 @@
 <?php echo "<h1>coucou je suis pres et vous ?</h1>";
 
 if(isset($_post["valider"])){
-    echo "idmedecins = ".$_post["idMedecins"] ." id patient = ".$_post["idPatient"]." date = ".$_post["ladate"]; 
+    echo "idmedecins = ".$_post["idMedecins"] ." id patient = ".$_post["idPatient"]." date = ".$_post["laDate"]; 
 }
 
 
@@ -45,7 +45,7 @@ try {
         foreach ($tabPatient as $Patient) {
             ?>
         
-            <option value="<?=$Patient["nom"]?>"> <?=$Patient["prenom"]?> </option>
+            <option value="<?=$Patient["id"]?>"> <?=$Patient["prenom"]." ".$Patient["nom"]?> </option>
             
         <?php
         }
@@ -58,7 +58,7 @@ try {
         foreach ($tabMedecins as $Medecin) {
             ?>
         
-            <option value="<?=$Medecin["nom"]?>"> <?=$Medecin["prenom"]?> </option>
+            <option value="<?=$Medecin["id"]?>"> <?=$Medecin["prenom"]." ".$Medecin["nom"]?> </option>
             
         <?php
         }
