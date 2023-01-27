@@ -14,8 +14,12 @@
 
 <?php echo "<h1>coucou je suis pres et vous ?</h1>";
 
-if(isset($_post["valider"])){
-    echo "idmedecins = ".$_post["idMedecins"] ." id patient = ".$_post["idPatient"]." date = ".$_post["laDate"]; 
+if(isset($_POST["valider"])){
+    echo "idmedecins = ".$_POST["idMedecins"] ." id patient = ".$_POST["idPatient"]." date = ".$_POST["laDate"]. "/n"; 
+    echo "/n coucou sa marche";
+}else
+{
+    echo "coucou elle ne marche pas";
 }
 
 
