@@ -14,6 +14,12 @@
 
 <?php echo "<h1>coucou je suis pres et vous ?</h1>";
 
+if (isset($_post["valider"])){
+    echo "idmedin = ".$_post["idMedecins"] ." id patient = ".$_post["idPatient"]." date = ".$_post["ladate"]; 
+}
+
+
+
 try {
 
     $ipserver ="192.168.65.60";
@@ -25,7 +31,6 @@ try {
 
     $requete = "select * from Patient";
     $requete2 =  "select * from Medecin";
-    $date = "select * from consultation where HOUR(dateheure)";
     $resultat = $GLOBALS["pdo"]->query($requete);
     $resultat2 = $GLOBALS["pdo"]->query($requete2);
     //resultat est du coup un objet de type PDOStatement
@@ -59,7 +64,8 @@ try {
         }
         ?>
         </select>
-        <p><input type="submit" value="OK"></p>
+        <input type="datetime-local" name="laDate">
+        <p><input type="submit" value="submi button" name="valider" ></p>
     </form>
     
     
