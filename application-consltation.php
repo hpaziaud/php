@@ -17,6 +17,10 @@
 if(isset($_POST["valider"])){
     echo "idmedecins = ".$_POST["idMedecins"] ." id patient = ".$_POST["idPatient"]." date = ".$_POST["laDate"]. "/n"; 
     echo "/n coucou sa marche";
+    $requete = "INSERT INTO `Consultation` (`Dateheure`, `idMedecin`, `idPatient`) 
+    VALUES 
+    ( '".$_POST["laDate"]."', '".$_POST["idMedecin"]."', '".$_POST["idPatient"]."');";
+    $resultat = $GLOBALS["pdo"]->query($requete);
 }else
 {
     echo "coucou elle ne marche pas";
@@ -41,7 +45,7 @@ try {
     $tabPatient = $resultat->fetchALL();
     $tabMedecins = $resultat2->fetchALL();
     ?>
-
+     <a=href"http://tpfinal.alwaysdata.net/products.html"> jai les grosse fesse</a>
     <form action="" method="post">
     <select name="idPatient">
         <?php
@@ -87,8 +91,7 @@ try {
 }
 
 ?>
-
-
+<button> <a href="http://tpfinal.alwaysdata.net/index.html"> j'aimes les gros seins de mariatou </a> </button>
 
 
 
