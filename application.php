@@ -9,17 +9,51 @@
 <body>
 
 
+
+
+
+<?php
+try {
+
+$ipserver ="192.168.65.60";
+$nomBase = "game";
+$loginPrivilege ="root";
+$passPrivilege ="root";
+
+$GLOBALS["pdo"] = new PDO('mysql:host=' . $ipserver . ';dbname=' . $nomBase . '', $loginPrivilege, $passPrivilege);
+
+$requete = "select * from user";
+$resultat = $GLOBALS["pdo"]->query($requete);
+$tabuser = $resultat->fetchALL();
+echo "les jours sont". $tabuser[0]["nom"] ."/n";
+?>
+
+
 <?php
 session_start();
 if (!isset($_SESSION['count'])) {
   $_SESSION['count'] = 0;
 } else {
   $_SESSION['count']++;
+ 
 }
 ?>
+<p>
+Bonjour visiteur, vous avez vu cette page <?php echo $_SESSION['count']; ?> fois.
+</p>
 
-
-
+<h2>HTML Form name Attribute.</h2>
+    <form action="" method="POST">
+        First name:
+ 
+        <input type="text" name="fname">
+        <br> Last name:
+ 
+        <input type="text" name="lname">
+        <br>
+ 
+        <input type="submit" name="submit" value='' >
+    </form>
 
 
 <?php
@@ -50,7 +84,12 @@ if (isset($_POST['submit'])) {
 
 
 
+  <?php
+} catch (Exception  $error) {
+    echo "error est : ".$error->getMessage();
+}
 
+?>
 
 
 </form>

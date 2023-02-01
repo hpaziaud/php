@@ -45,7 +45,7 @@ try {
     $tabPatient = $resultat->fetchALL();
     $tabMedecins = $resultat2->fetchALL();
     ?>
-     <a=href"http://tpfinal.alwaysdata.net/products.html"> jai les grosse fesse</a>
+     <a=href"http://tpfinal.alwaysdata.net/products.html"> site de ma mere</a>
     <form action="" method="post">
     <select name="idPatient">
         <?php
