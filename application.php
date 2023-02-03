@@ -25,7 +25,7 @@ $GLOBALS["pdo"] = new PDO('mysql:host=' . $ipserver . ';dbname=' . $nomBase . ''
 $requete = "select * from user";
 $resultat = $GLOBALS["pdo"]->query($requete);
 $tabuser = $resultat->fetchALL();
-echo "les jours sont". $tabuser[0]["nom"] ."/n";
+echo "les jours sont". $tabuser[0][] ."/n";
 ?>
 
 
