@@ -36,7 +36,14 @@
 
 
     if (isset($_POST["valider"])) {
-      echo "name = " . $_POST["name"] . " nom = " . $_POST["surname"] . "\n";
+
+     
+      $requete3 = "SELECT `id` FROM `user` WHERE user.nom =. ".$_POST['surname'].";";
+      $resultat3 = $GLOBALS["pdo"]->query($requete3);
+      $tabidUser = $resultat3->fetchALL();
+      $idener = $tabidUser
+
+      echo "name = " . $_POST["name"] . " nom = " . $_POST["surname"] . "id = " . $idener . "\n";
 
       $requete = "INSERT INTO `user` (`nom`, `prenom`) VALUES ('" . $_POST['surname'] . "', '" . $_POST["name"] . "')";
       $resultat = $GLOBALS["pdo"]->query($requete);
@@ -93,6 +100,7 @@
         $user_choice == "pierre" && $computer_choice == "ciseaux" ||
         $user_choice == "papier" && $computer_choice == "pierre" ||
         $user_choice == "ciseaux" && $computer_choice == "papier"
+        
       ) {
 
         echo "Vous avez gagné !";
