@@ -38,10 +38,14 @@ session_start();
 
     if (isset($_POST["valider"])) {
       
-      $requete6 = "SELECT `nom`, `prenom` FROM `user` WHERE nom = " . $_POST['surname'] . " & prenom = " . $_POST["name"] . "";
+      $requete6 = "SELECT * FROM `user` WHERE `nom` LIKE "' . $_POST['surname'] . '" AND `prenom` LIKE '. $_POST["name"] .";
       $resultat6 = $GLOBALS["pdo"]->query($requete6);
       $connect = $resultat6->fetchALL();
-      echo $connect;
+      if ($connect!=0){
+        $_SESSION["idUser"]=//l'id de l'user retrouve
+      }else{
+
+      
 
 
       $requete = "INSERT INTO `user` (`nom`, `prenom`) VALUES ('" . $_POST['surname'] . "', '" . $_POST["name"] . "')";
@@ -49,7 +53,7 @@ session_start();
       $_SESSION["idUser"] = $GLOBALS["pdo"]->lastInsertId();
       $name = $_POST['name'];
 
-
+      }
 
       
     } else {
