@@ -27,7 +27,7 @@ session_start();
     $resultat = $GLOBALS["pdo"]->query($requete);
     $tabuser = $resultat->fetchALL();
 
-    $requete1 = "SELECT match.id as idMatch, match.date,match.gagneNGP,user.id as idUser, user.nom,user.prenom FROM `match`,`user` where match.idUser = user.id";
+    $requete1 = "SELECT DISTINCT match.id as idMatch, match.date,match.gagneNGP,user.id as idUser, user.nom,user.prenom FROM `match`,`user` where match.idUser = user.id";
     $resultat1 = $GLOBALS["pdo"]->query($requete1);
     $tabmatch = $resultat1->fetchALL();
    
@@ -37,8 +37,11 @@ session_start();
 
 
     if (isset($_POST["valider"])) {
-
-
+      
+      $requete6 = "SELECT `nom`, `prenom` FROM `user` WHERE nom = " . $_POST['surname'] . " & prenom = " . $_POST["name"] . ";
+      $resultat6 = $GLOBALS["pdo"]->query($requete6);
+      $connect = $resultat6->fetchALL();
+      echo $connect;
 
 
       $requete = "INSERT INTO `user` (`nom`, `prenom`) VALUES ('" . $_POST['surname'] . "', '" . $_POST["name"] . "')";
