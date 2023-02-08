@@ -130,7 +130,7 @@ session_start();
     ?>
     <?php
    if (isset($_POST["valider"])){
-   echo "Bonjour id :". $_SESSION["idUser"] ."". $_POST['surname'] ."". $_POST['name'] .", vous avez vu cette page ". $_SESSION['count'] ." fois.";
+   echo "Bonjour id :". $_SESSION["idUser"] ." ". $_POST['surname'] ." ". $_POST['name'] .", vous avez vu cette page ". $_SESSION['count'] ." fois.";
   
    }else{
 echo"coucou";
@@ -144,7 +144,7 @@ echo"coucou";
   ?>
   <?php
  foreach ($tabmatch as $match) {
-      echo "id : " . $match["idUser"] . "   on a nom : " . $match["nom"] . " prenom :  " . $match["prenom"] . " a gagné ? " . $match["gagneNGP"] . " le " . $match["date"] . "<br>";
+      echo "<p> id : " . $match["idUser"] . "   on a nom : " . $match["nom"] . " prenom :  " . $match["prenom"] . " a gagné ? " . $match["gagneNGP"] . " le " . $match["date"] . "</p>";
     }
 ?>
 
