@@ -38,7 +38,7 @@ session_start();
 
     if (isset($_POST["valider"])) {
       
-      $requete6 = "SELECT `nom`, `prenom` FROM `user` WHERE nom = " . $_POST['surname'] . " & prenom = " . $_POST["name"] . ";
+      $requete6 = "SELECT `nom`, `prenom` FROM `user` WHERE nom = " . $_POST['surname'] . " & prenom = " . $_POST["name"] . "";
       $resultat6 = $GLOBALS["pdo"]->query($requete6);
       $connect = $resultat6->fetchALL();
       echo $connect;
