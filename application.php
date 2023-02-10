@@ -1,8 +1,7 @@
 <?php 
 session_start();
 
-//nombre de fois ou iduser à gagné 
-//SELECT user.nom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='G' AND match.idUser=user.id GROUP BY idUser;
+
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -42,12 +41,13 @@ session_start();
 
     if (isset($_POST["valider"])) {
       
-      $requete8 = "SELECT * FROM `user` WHERE `nom` = '" . $_POST['surname'] . "' AND `prenom` = '". $_POST["name"] ."'";
+      $requete7 = "SELECT * FROM `user` WHERE `nom` = '" . $_POST['surname'] . "' AND `prenom` = '". $_POST["name"] ."'";
       
-      $resultat8 = $GLOBALS["pdo"]->query($requete8);
-      $tab = $resultat8->fetch();
-      if ($resultat8->rowCount()>0){
+      $resultat7 = $GLOBALS["pdo"]->query($requete7);
+      $tab = $resultat7->fetch();
+      if ($resultat7->rowCount()>0){
         $_SESSION["idUser"]=$tab["id"];
+        
       }else{
 
       
@@ -100,30 +100,29 @@ session_start();
     <div class="container" style="background-color: #eee">
     
 
-    <?php
-  $requete7 = "SELECT user.nom,user.prenom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='G' AND match.idUser=user.id GROUP BY idUser;";
-  $resultat7 = $GLOBALS["pdo"]->query($requete7);
-  $tabjouer = $resultat7->fetchALL();
-
-
-  foreach($tabjouer as $row) {
-    echo "Nom : " . $row['nom'] . " " . $row['prenom'] .  " Nombre de matchs gagnés : " . $row['COUNT(match.idUser)'] . "<br>";
+    <?php if(isset($_POST["valider"])){
+  $requete8 = "SELECT user.nom,user.prenom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='G' AND match.idUser=user.id GROUP BY idUser;";
+    }else{echo"";}
+  $resultat8 = $GLOBALS["pdo"]->query($requete8);
+  $tabjouerG = $resultat8->fetchALL();
+  foreach($tabjouerG as $row) {
+    echo "<button style='background-color: white; color: black; border: 2px solid green;;'>Nom : " . $row['nom'] . " " . $row['prenom'] .  " Nombre de matchs gagnés : " . $row['COUNT(match.idUser)'] . "</button><br>";
 }
-$requete7 = "SELECT user.nom,user.prenom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='P' AND match.idUser=user.id GROUP BY idUser;";
-  $resultat7 = $GLOBALS["pdo"]->query($requete7);
-  $tabjouer = $resultat7->fetchALL();
+$requete9 = "SELECT user.nom,user.prenom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='P' AND match.idUser=user.id GROUP BY idUser;";
+  $resultat9 = $GLOBALS["pdo"]->query($requete9);
+  $tabjouerP = $resultat9->fetchALL();
 
 
-  foreach($tabjouer as $row) {
-    echo "Nom : " . $row['nom'] .  " " . $row['prenom'] .  " Nombre de matchs perdu : " . $row['COUNT(match.idUser)'] . "<br>";
+  foreach($tabjouerP as $row) {
+    echo "<button style='background-color: white; color: black; border: 2px solid black;;'>Nom : " . $row['nom'] .  " " . $row['prenom'] .  " Nombre de matchs perdu : " . $row['COUNT(match.idUser)'] . "</button><br>";
 }
-$requete7 = "SELECT user.nom,user.prenom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='N' AND match.idUser=user.id GROUP BY idUser;";
-  $resultat7 = $GLOBALS["pdo"]->query($requete7);
-  $tabjouer = $resultat7->fetchALL();
+$requete10 = "SELECT user.nom,user.prenom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='N' AND match.idUser=user.id GROUP BY idUser;";
+  $resultat10 = $GLOBALS["pdo"]->query($requete10);
+  $tabjouerN = $resultat10->fetchALL();
 
 
-  foreach($tabjouer as $row) {
-    echo "Nom : " . $row['nom'] .  " " . $row['prenom'] .  " Nombre de matchs null : " . $row['COUNT(match.idUser)'] . "<br>";
+  foreach($tabjouerN as $row) {
+    echo "<button style='background-color: white; color: black; border: 2px solid blue;;'>Nom : " . $row['nom'] .  " " . $row['prenom'] .  " Nombre de matchs null : " . $row['COUNT(match.idUser)'] . "</button><br>";
 }
 
 ?>
