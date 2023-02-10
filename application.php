@@ -161,8 +161,7 @@ echo"coucou";
 <?php
   $requete7 = "SELECT user.nom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='G' AND match.idUser=user.id GROUP BY idUser;";
   $resultat7 = $GLOBALS["pdo"]->query($requete7);
-  $tabjouer = $resultat7->fetch();
- echo $tabjouer;
+  $tabjouer = $resultat7->fetchALL();
 ?>
 
 </body>
