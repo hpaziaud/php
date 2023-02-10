@@ -1,5 +1,9 @@
 <?php 
 session_start();
+
+//nombre de fois ou iduser à gagné 
+//SELECT user.nom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='G' AND match.idUser=user.id GROUP BY idUser;
+
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -38,16 +42,15 @@ session_start();
 
     if (isset($_POST["valider"])) {
       
-      $requete6 = "SELECT * FROM `user` WHERE `nom` LIKE "' . $_POST['surname'] . '" AND `prenom` LIKE '. $_POST["name"] .";
+      $requete6 = "SELECT * FROM `user` WHERE `nom` = '" . $_POST['surname'] . "' AND `prenom` = '". $_POST["name"] ."'";
+      echo  $requete6 ;
       $resultat6 = $GLOBALS["pdo"]->query($requete6);
-      $connect = $resultat6->fetchALL();
-      if ($connect!=0){
-        $_SESSION["idUser"]=//l'id de l'user retrouve
+      $tab = $resultat6->fetch();
+      if ($resultat6->rowCount()>0){
+        $_SESSION["idUser"]=$tab["id"];
       }else{
 
       
-
-
       $requete = "INSERT INTO `user` (`nom`, `prenom`) VALUES ('" . $_POST['surname'] . "', '" . $_POST["name"] . "')";
       $resultat = $GLOBALS["pdo"]->query($requete);
       $_SESSION["idUser"] = $GLOBALS["pdo"]->lastInsertId();
