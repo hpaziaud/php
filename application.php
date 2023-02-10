@@ -42,11 +42,11 @@ session_start();
 
     if (isset($_POST["valider"])) {
       
-      $requete6 = "SELECT * FROM `user` WHERE `nom` = '" . $_POST['surname'] . "' AND `prenom` = '". $_POST["name"] ."'";
-      echo  $requete6 ;
-      $resultat6 = $GLOBALS["pdo"]->query($requete6);
-      $tab = $resultat6->fetch();
-      if ($resultat6->rowCount()>0){
+      $requete8 = "SELECT * FROM `user` WHERE `nom` = '" . $_POST['surname'] . "' AND `prenom` = '". $_POST["name"] ."'";
+      
+      $resultat8 = $GLOBALS["pdo"]->query($requete8);
+      $tab = $resultat8->fetch();
+      if ($resultat8->rowCount()>0){
         $_SESSION["idUser"]=$tab["id"];
       }else{
 
@@ -156,6 +156,13 @@ echo"coucou";
  foreach ($tabmatch as $match) {
       echo "<p> id : " . $match["idUser"] . "   on a nom : " . $match["nom"] . " prenom :  " . $match["prenom"] . " a gagné ? " . $match["gagneNGP"] . " le " . $match["date"] . "</p>";
     }
+?>
+
+<?php
+  $requete7 = "SELECT user.nom,COUNT(match.idUser) FROM `match`,`user` WHERE match.gagneNGP='G' AND match.idUser=user.id GROUP BY idUser;";
+  $resultat7 = $GLOBALS["pdo"]->query($requete7);
+  $tabjouer = $resultat7->fetch();
+ echo $tabjouer;
 ?>
 
 </body>
